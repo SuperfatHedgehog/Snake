@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Змейка
@@ -10,19 +11,26 @@ namespace Змейка
     {
         static void Main(string[] args)
         {
-            Point p = new Point(4, 5, '*');
+            HLine UpLine = new HLine(0, 70, 0, '*');
+            UpLine.Draw();
+            HLine DownLine = new HLine(0, 70, 20, '*');
+            DownLine.Draw();
+            VLine LeftLine = new VLine(0, 0, 20, '*');
+            LeftLine.Draw();
+            VLine RightLine = new VLine(70, 0, 20, '*');
+            RightLine.Draw();
 
+            Point p = new Point(4, 5, '*');
             Snake snake = new Snake(p, 4, Direction.RIGHT);
             snake.Draw();
-
-            HLine UpLine = new HLine(0, 78, 0, '*');
-            UpLine.Draw();
-            HLine DownLine = new HLine(0, 78, 24, '*');
-            DownLine.Draw();
-            VLine LeftLine = new VLine(0, 0, 24, '*');
-            LeftLine.Draw();
-            VLine RightLine = new VLine(78, 0, 24, '*');
-            RightLine.Draw();
+            snake.Move();
+            Thread.Sleep(300);
+            snake.Move();
+            Thread.Sleep(300);
+            snake.Move();
+            Thread.Sleep(300);
+            snake.Move();
+            Thread.Sleep(300);
 
             Console.ReadLine();
         }
